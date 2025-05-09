@@ -1,7 +1,7 @@
 .ls {
     background: #001030;
     color: white;
-    height: 75vh;
+    height: 100vh;
 }
 
 .ls-top {
@@ -41,16 +41,18 @@
     display: none;
 }
 
-.sub-menu hr{
+.sub-menu hr {
     border: none;
     height: 1px;
     background: #a4a4a4;
     margin: 8px 0;
 }
-.sub-menu p{
+
+.sub-menu p {
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
 }
+
 .menu:hover .sub-menu {
     display: block;
 }
@@ -73,7 +75,7 @@
     border: none;
     outline: none;
     color: white;
-    font-size: 11px;
+    font-size: 15px;
 }
 
 .ls-search input::placeholder {
@@ -93,7 +95,7 @@
     gap: 10px;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 18px;
 }
 
 .friends img {
@@ -115,6 +117,7 @@
 .friends:hover {
     background-color: #077EFF;
 }
+
 .friends:hover span {
     color: white;
 }
@@ -137,8 +140,9 @@
 .friends.border div span {
     color: #07fff3;
 }
+
 @media (max-width:900px) {
-    .ls{
+    .ls {
         width: 100%;
     }
 }

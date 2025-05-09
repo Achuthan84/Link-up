@@ -154,7 +154,7 @@ const ChatBox = () => {
         }
       </div>
       <div className="chat-input">
-        <input onKeyDown={(e) => e.key === "Enter" ? sendMessage() : null} onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Send a message' />
+        <input onKeyDown={(e) => e.key === "Enter" ? sendMessage() : null} onChange={(e) => setInput(e.target.value)} value={input} type="text" className='chat-data-input' placeholder='Send a message' />
         <input onChange={sendImage} type="file" id='image' accept="image/png, image/jpeg" hidden />
         <label htmlFor="image">
           <img src={assets.gallery_icon} alt="" />

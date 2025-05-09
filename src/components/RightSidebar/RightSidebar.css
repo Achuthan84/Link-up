@@ -1,23 +1,26 @@
-.rs{
+.rs {
     color: white;
     background: #001030;
     position: relative;
-    height: 75vh;
+    height: 100vh;
     overflow-y: scroll;
 }
-.rs-profile{
+
+.rs-profile {
     padding-top: 60px;
     text-align: center;
-    max-width:70%;
+    max-width: 70%;
     margin: auto;
 }
-.rs-profile img{
+
+.rs-profile img {
     width: 110px;
     aspect-ratio: 1/1;
     border-radius: 50%;
 }
-.rs-profile h3{
-    font-size: 18px;
+
+.rs-profile h3 {
+    font-size: 21px;
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -25,21 +28,25 @@
     gap: 5px;
     margin: 5px 0px;
 }
-.rs-profile p{
-    font-size: 10px;
+
+.rs-profile p {
+    font-size: 13px;
     opacity: 80%;
     font-weight: 300;
 }
-.rs hr{
+
+.rs hr {
     border-color: #ffffff50;
     margin: 15px 0px;
 }
-.rs-media{
+
+.rs-media {
     padding: 0px 20px;
     font-size: 13px;
-}   
-.rs-media div{
-    max-height: 180px;  
+}
+
+.rs-media div {
+    max-height: 180px;
     overflow-y: scroll;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -47,12 +54,13 @@
     margin-top: 8px;
 }
 
-.rs-media div img{
+.rs-media div img {
     width: 60px;
     border-radius: 4px;
     cursor: pointer;
 }
-.rs button{
+
+.rs button {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -60,14 +68,15 @@
     background: #077EFF;
     color: white;
     border: none;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 300;
     padding: 10px 65px;
     border-radius: 20px;
     cursor: pointer;
 }
+
 @media (max-width:900px) {
-    .rs{
+    .rs {
         display: none;
     }
 }
