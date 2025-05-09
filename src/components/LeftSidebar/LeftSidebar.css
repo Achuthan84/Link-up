@@ -1,70 +1,34 @@
-/* Base sidebar styles */
 .ls {
     background: #001030;
     color: white;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out;
+    height: 75vh;
 }
 
-/* Hide sidebar */
-.ls.hidden {
-    display: none;
-}
-
-/* Show sidebar on mobile when toggled */
-.visible-mobile {
-    display: flex !important;
-}
-
-/* Toggle icon for mobile */
-.mobile-toggle {
-    display: none;
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    background-color: #002670;
-    padding: 8px;
-    border-radius: 6px;
-    z-index: 2000;
-    cursor: pointer;
-}
-
-/* Top section of sidebar */
 .ls-top {
     padding: 20px;
 }
 
-/* Logo and menu container */
 .ls-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Logo */
 .ls-nav .logo {
     max-width: 140px;
 }
 
-/* Menu icon */
 .ls-nav .menu img {
     max-height: 20px;
     opacity: 0.6;
     cursor: pointer;
 }
 
-/* Menu positioning */
 .ls-nav .menu {
     position: relative;
     padding: 10px 0;
 }
 
-/* Dropdown menu */
 .menu .sub-menu {
     position: absolute;
     top: 100%;
@@ -77,23 +41,20 @@
     display: none;
 }
 
-.sub-menu hr {
+.sub-menu hr{
     border: none;
     height: 1px;
     background: #a4a4a4;
     margin: 8px 0;
 }
-
-.sub-menu p {
+.sub-menu p{
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
 }
-
 .menu:hover .sub-menu {
     display: block;
 }
 
-/* Search bar */
 .ls-search {
     background-color: #002670;
     display: flex;
@@ -112,30 +73,27 @@
     border: none;
     outline: none;
     color: white;
-    font-size: 15px;
-    flex: 1;
+    font-size: 11px;
 }
 
 .ls-search input::placeholder {
     color: #c8c8c8;
 }
 
-/* Chat list */
 .ls-list {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
+    height: 70%;
+    overflow-y: scroll;
 }
 
-/* Each friend/chat entry */
 .friends {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 13px;
 }
 
 .friends img {
@@ -157,12 +115,10 @@
 .friends:hover {
     background-color: #077EFF;
 }
-
 .friends:hover span {
     color: white;
 }
 
-/* Add user */
 .add-user div {
     flex: 1;
     flex-direction: row;
@@ -174,7 +130,6 @@
     width: 25px;
 }
 
-/* Highlight for unseen messages */
 .friends.border img {
     border: 3px solid #07fff3;
 }
@@ -182,43 +137,8 @@
 .friends.border div span {
     color: #07fff3;
 }
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .ls {
-        position: fixed;
-        top: 0;
-        left: 0;
-        /* width: 80%;
-        max-width: 300px; */
-        height: 100%;
-        background-color: #001030;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .mobile-toggle {
-        display: block;
-    }
-
-    .ls-top {
-        padding: 16px;
-    }
-
-    .ls-search input {
-        font-size: 14px;
-    }
-
-    .friends {
-        padding: 10px;
-        font-size: 15px;
-    }
-
-    .friends img {
-        width: 32px;
-        height: 32px;
-    }
-
-    .friends span {
-        font-size: 11px;
+@media (max-width:900px) {
+    .ls{
+        width: 100%;
     }
 }
