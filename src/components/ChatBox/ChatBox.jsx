@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import './ChatBox.css'
-import assets from '../../assets/assets'
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import './ChatBox.css';
+import assets from '../../assets/assets';
 import { AppContext } from '../../context/AppContext';
 import { arrayUnion, doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
@@ -9,15 +9,17 @@ import upload from '../../lib/upload';
 
 const ChatBox = () => {
 
-
-  const { userData, messagesId, chatUser, messages, setMessages, chatVisible, setChatVisible } = useContext(AppContext);
+  const { userData, messagesId, chatUser, messages, setMessages, chatVisible, setChatVisible, blockUser } = useContext(AppContext);
   const [input, setInput] = useState("");
   const scrollEnd = useRef();
 
   const sendMessage = async () => {
+    if (chatUser.blocked) {
+      toast.error("You have blocked this user.");
+      return;
+    }
 
     try {
-
       if (input && messagesId) {
         await updateDoc(doc(db, "messages", messagesId), {
           messages: arrayUnion({
@@ -25,7 +27,7 @@ const ChatBox = () => {
             text: input,
             createdAt: new Date()
           })
-        })
+        });
 
         const userIDs = [chatUser.rId, userData.id];
 
@@ -38,23 +40,21 @@ const ChatBox = () => {
             const chatIndex = userChatsData.chatsData.findIndex((c) => c.messageId === messagesId);
             userChatsData.chatsData[chatIndex].lastMessage = input;
             userChatsData.chatsData[chatIndex].updatedAt = Date.now();
-            if (userChatsData.chatsData[chatIndex].rId == userData.id) {
+            if (userChatsData.chatsData[chatIndex].rId === userData.id) {
               userChatsData.chatsData[chatIndex].messageSeen = false;
             }
             await updateDoc(userChatsRef, {
               chatsData: userChatsData.chatsData,
             });
           }
-        })
+        });
       }
-
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
 
-    setInput("")
-
-  }
+    setInput("");
+  };
 
   const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();
@@ -62,16 +62,19 @@ const ChatBox = () => {
     const minute = date.getMinutes();
     if (hour > 12) {
       date = hour - 12 + ':' + minute + " PM";
-    }
-    else {
+    } else {
       date = hour + ':' + minute + " AM";
     }
     return date;
-  }
+  };
 
   const sendImage = async (e) => {
+    if (chatUser.blocked) {
+      toast.error("You have blocked this user.");
+      return;
+    }
 
-    const fileUrl = await upload(e.target.files[0])
+    const fileUrl = await upload(e.target.files[0]);
 
     if (fileUrl && messagesId) {
       await updateDoc(doc(db, "messages", messagesId), {
@@ -80,7 +83,7 @@ const ChatBox = () => {
           image: fileUrl,
           createdAt: new Date()
         })
-      })
+      });
 
       const userIDs = [chatUser.rId, userData.id];
 
@@ -97,14 +100,13 @@ const ChatBox = () => {
             chatsData: userChatsData.chatsData,
           });
         }
-      })
+      });
     }
-  }
-
+  };
 
   useEffect(() => {
     scrollEnd.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages])
+  }, [messages]);
 
   useEffect(() => {
     if (messagesId) {
@@ -115,21 +117,27 @@ const ChatBox = () => {
         unSub();
       };
     }
-
   }, [messagesId]);
 
   return chatUser ? (
     <div className={`chat-box ${chatVisible ? "" : "hidden"}`}>
       <div className="chat-user">
         <img src={assets.profile_sample} alt="" />
-        <p>{chatUser ? chatUser.userData.name : "Richard Sanford"} {Date.now() - chatUser.userData.lastSeen <= 70000 ? <img className='dot' src={assets.green_dot} alt='' /> : null}</p>
+        <p>{chatUser.userData.name} {Date.now() - chatUser.userData.lastSeen <= 70000 ? <img className='dot' src={assets.green_dot} alt='' /> : null}</p>
         <img onClick={() => setChatVisible(false)} className='arrow' src={assets.arrow_icon} alt="" />
+        <button className='user-block' onClick={() => blockUser(userData.id, chatUser.rId)}>
+          {chatUser.blocked ? "Unblock User" : "Block User"}
+        </button>
         <img className='help' src={assets.help_icon} alt="" />
       </div>
       <div className="chat-msg">
         <div ref={scrollEnd}></div>
         {
           messages.map((msg, index) => {
+            if (msg.sId === chatUser.rId && chatUser.blocked) {
+              return null; // Don't render messages from blocked user
+            }
+
             return (
               <div key={index} className={msg.sId === userData.id ? "s-msg" : "r-msg"}>
                 {msg["image"]
@@ -160,4 +168,4 @@ const ChatBox = () => {
   </div>
 }
 
-export default ChatBox
+export default ChatBox;

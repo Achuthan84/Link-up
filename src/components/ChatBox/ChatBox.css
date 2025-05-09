@@ -3,6 +3,7 @@
     position: relative;
     background-color: #F1F5FF;
 }
+
 .chat-user {
     padding: 10px 15px;
     display: flex;
@@ -10,17 +11,21 @@
     gap: 10px;
     border-bottom: 1px solid #C6C6C6;
 }
+
 .chat-user img {
     width: 25px;
     border-radius: 50%;
 }
+
 .chat-user img:first-child {
     width: 38px;
     aspect-ratio: 1/1;
 }
-.chat-user .arrow{
+
+.chat-user .arrow {
     display: none;
 }
+
 .chat-user p {
     flex: 1;
     font-weight: 500;
@@ -30,6 +35,7 @@
     align-items: center;
     gap: 5px;
 }
+
 .chat-input {
     display: flex;
     align-items: center;
@@ -41,21 +47,26 @@
     left: 0;
     right: 0;
 }
+
 .chat-input img {
     width: 30px;
     cursor: pointer;
 }
-.chat-input label{
+
+.chat-input label {
     display: flex;
 }
+
 .chat-input label img {
     width: 22px;
 }
+
 .chat-input input {
     flex: 1;
     border: none;
     outline: none;
 }
+
 .chat-msg {
     height: calc(100% - 70px);
     padding-bottom: 50px;
@@ -63,24 +74,38 @@
     display: flex;
     flex-direction: column-reverse;
 }
+
 .s-msg div img,
 .r-msg div img {
     width: 27px;
     aspect-ratio: 1/1;
     border-radius: 50%;
 }
+
 .s-msg,
 .r-msg {
     display: flex;
     align-items: end;
     justify-content: end;
     gap: 5px;
-    padding:0px 15px;
+    padding: 0px 15px;
 }
+
+.user-block {
+    padding: 8px 20px;
+    border-radius: 60px;
+    border: none;
+    background-color: #ff1900;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
 .r-msg {
     flex-direction: row-reverse;
     justify-content: start;
 }
+
 .msg {
     color: white;
     background-color: #077EFF;
@@ -91,23 +116,28 @@
     border-radius: 8px 8px 0px 8px;
     margin-bottom: 30px;
 }
+
 .r-msg .msg {
     border-radius: 8px 8px 8px 0px;
 }
-.s-msg .msg{
+
+.s-msg .msg {
     background-color: #3A36FF;
 }
-.msg-img{
+
+.msg-img {
     max-width: 230px;
     margin-bottom: 30px;
     border-radius: 10px;
 }
+
 .s-msg div,
 .r-msg div {
     text-align: center;
     font-size: 9px;
 }
-.chat-welcome{
+
+.chat-welcome {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -116,23 +146,28 @@
     gap: 5px;
     color: #adadad;
 }
-.chat-welcome img{
+
+.chat-welcome img {
     width: 60px;
 }
-.chat-welcome p{
+
+.chat-welcome p {
     font-size: 20px;
     font-weight: 500;
     color: #383838;
 }
+
 @media (max-width:900px) {
-    .chat-box{
+    .chat-box {
         width: 100%;
         justify-content: center;
     }
-    .chat-user .arrow{
+
+    .chat-user .arrow {
         display: block;
     }
-    .chat-user .help{
+
+    .chat-user .help {
         display: none;
     }
 }
