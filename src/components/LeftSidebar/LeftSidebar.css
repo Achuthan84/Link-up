@@ -1,3 +1,4 @@
+/* Base sidebar styles */
 .ls {
     background: #001030;
     color: white;
@@ -5,65 +6,94 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
 }
 
+/* Hide sidebar */
+.ls.hidden {
+    display: none;
+}
+
+/* Show sidebar on mobile when toggled */
+.visible-mobile {
+    display: flex !important;
+}
+
+/* Toggle icon for mobile */
+.mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    background-color: #002670;
+    padding: 8px;
+    border-radius: 6px;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+/* Top section of sidebar */
 .ls-top {
-    padding: 16px;
+    padding: 20px;
 }
 
+/* Logo and menu container */
 .ls-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Logo */
 .ls-nav .logo {
-    max-width: 120px;
-    height: auto;
+    max-width: 140px;
 }
 
+/* Menu icon */
 .ls-nav .menu img {
     max-height: 20px;
     opacity: 0.6;
     cursor: pointer;
 }
 
+/* Menu positioning */
 .ls-nav .menu {
     position: relative;
     padding: 10px 0;
 }
 
+/* Dropdown menu */
 .menu .sub-menu {
     position: absolute;
     top: 100%;
     right: 0;
-    width: 140px;
-    padding: 16px;
-    border-radius: 6px;
+    width: 130px;
+    padding: 20px;
+    border-radius: 5px;
     background-color: white;
     color: black;
     display: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-}
-
-.menu:hover .sub-menu {
-    display: block;
 }
 
 .sub-menu hr {
     border: none;
     height: 1px;
     background: #a4a4a4;
-    margin: 10px 0;
+    margin: 8px 0;
 }
 
 .sub-menu p {
     cursor: pointer;
-    font-size: 15px;
-    margin: 5px 0;
+    font-size: 16px;
 }
 
+.menu:hover .sub-menu {
+    display: block;
+}
+
+/* Search bar */
 .ls-search {
     background-color: #002670;
     display: flex;
@@ -71,11 +101,10 @@
     gap: 10px;
     padding: 10px 12px;
     margin-top: 20px;
-    border-radius: 8px;
 }
 
 .ls-search img {
-    width: 18px;
+    width: 16px;
 }
 
 .ls-search input {
@@ -91,44 +120,38 @@
     color: #c8c8c8;
 }
 
+/* Chat list */
 .ls-list {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    height: 100%;
     overflow-y: auto;
-    padding-bottom: 16px;
 }
 
-/* Chat Item Styles */
+/* Each friend/chat entry */
 .friends {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 16px;
+    gap: 10px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease;
+    font-size: 18px;
 }
 
 .friends img {
-    width: 38px;
-    height: 38px;
-    object-fit: cover;
+    width: 35px;
+    aspect-ratio: 1/1;
     border-radius: 50%;
 }
 
 .friends div {
     display: flex;
     flex-direction: column;
-    flex: 1;
 }
 
 .friends span {
     color: #9f9f9f;
-    font-size: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 11px;
 }
 
 .friends:hover {
@@ -139,17 +162,9 @@
     color: white;
 }
 
-/* Special Style for Unread */
-.friends.border img {
-    border: 3px solid #07fff3;
-}
-
-.friends.border div span {
-    color: #07fff3;
-}
-
-/* Search Result Add Button */
+/* Add user */
 .add-user div {
+    flex: 1;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -159,15 +174,34 @@
     width: 25px;
 }
 
-/* Responsive Media Query */
+/* Highlight for unseen messages */
+.friends.border img {
+    border: 3px solid #07fff3;
+}
+
+.friends.border div span {
+    color: #07fff3;
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
     .ls {
-        padding: 12px;
-        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* width: 80%;
+        max-width: 300px; */
+        height: 100%;
+        background-color: #001030;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
     }
 
-    .ls-nav .logo {
-        max-width: 100px;
+    .mobile-toggle {
+        display: block;
+    }
+
+    .ls-top {
+        padding: 16px;
     }
 
     .ls-search input {
@@ -175,7 +209,7 @@
     }
 
     .friends {
-        padding: 8px 12px;
+        padding: 10px;
         font-size: 15px;
     }
 
@@ -186,14 +220,5 @@
 
     .friends span {
         font-size: 11px;
-    }
-
-    .menu .sub-menu {
-        width: 120px;
-        padding: 14px;
-    }
-
-    .sub-menu p {
-        font-size: 14px;
     }
 }
