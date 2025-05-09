@@ -2,10 +2,13 @@
     background: #001030;
     color: white;
     height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .ls-top {
-    padding: 20px;
+    padding: 16px;
 }
 
 .ls-nav {
@@ -15,7 +18,8 @@
 }
 
 .ls-nav .logo {
-    max-width: 140px;
+    max-width: 120px;
+    height: auto;
 }
 
 .ls-nav .menu img {
@@ -33,28 +37,31 @@
     position: absolute;
     top: 100%;
     right: 0;
-    width: 130px;
-    padding: 20px;
-    border-radius: 5px;
+    width: 140px;
+    padding: 16px;
+    border-radius: 6px;
     background-color: white;
     color: black;
     display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.menu:hover .sub-menu {
+    display: block;
 }
 
 .sub-menu hr {
     border: none;
     height: 1px;
     background: #a4a4a4;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .sub-menu p {
     cursor: pointer;
-    font-size: 16px;
-}
-
-.menu:hover .sub-menu {
-    display: block;
+    font-size: 15px;
+    margin: 5px 0;
 }
 
 .ls-search {
@@ -64,10 +71,11 @@
     gap: 10px;
     padding: 10px 12px;
     margin-top: 20px;
+    border-radius: 8px;
 }
 
 .ls-search img {
-    width: 16px;
+    width: 18px;
 }
 
 .ls-search input {
@@ -76,6 +84,7 @@
     outline: none;
     color: white;
     font-size: 15px;
+    flex: 1;
 }
 
 .ls-search input::placeholder {
@@ -85,33 +94,41 @@
 .ls-list {
     display: flex;
     flex-direction: column;
-    height: 70%;
-    overflow-y: scroll;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 16px;
 }
 
+/* Chat Item Styles */
 .friends {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
+    gap: 12px;
+    padding: 10px 16px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
+    transition: background 0.3s ease;
 }
 
 .friends img {
-    width: 35px;
-    aspect-ratio: 1/1;
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
 .friends div {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .friends span {
     color: #9f9f9f;
-    font-size: 11px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .friends:hover {
@@ -122,8 +139,17 @@
     color: white;
 }
 
+/* Special Style for Unread */
+.friends.border img {
+    border: 3px solid #07fff3;
+}
+
+.friends.border div span {
+    color: #07fff3;
+}
+
+/* Search Result Add Button */
 .add-user div {
-    flex: 1;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -133,16 +159,41 @@
     width: 25px;
 }
 
-.friends.border img {
-    border: 3px solid #07fff3;
-}
-
-.friends.border div span {
-    color: #07fff3;
-}
-
-@media (max-width:900px) {
+/* Responsive Media Query */
+@media (max-width: 768px) {
     .ls {
+        padding: 12px;
         width: 100%;
+    }
+
+    .ls-nav .logo {
+        max-width: 100px;
+    }
+
+    .ls-search input {
+        font-size: 14px;
+    }
+
+    .friends {
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+
+    .friends img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .friends span {
+        font-size: 11px;
+    }
+
+    .menu .sub-menu {
+        width: 120px;
+        padding: 14px;
+    }
+
+    .sub-menu p {
+        font-size: 14px;
     }
 }
