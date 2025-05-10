@@ -29,7 +29,7 @@
 .chat-user p {
     flex: 1;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 25px;
     color: #393939;
     display: flex;
     align-items: center;
@@ -91,6 +91,11 @@
     padding: 0px 15px;
 }
 
+.responsive-user-block {
+    display: none;
+}
+
+.responsive-user-block,
 .user-block {
     padding: 8px 20px;
     border-radius: 60px;
@@ -111,7 +116,7 @@
     background-color: #077EFF;
     padding: 8px;
     max-width: 200px;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 300;
     border-radius: 8px 8px 0px 8px;
     margin-bottom: 30px;
@@ -134,7 +139,7 @@
 .s-msg div,
 .r-msg div {
     text-align: center;
-    font-size: 9px;
+    font-size: 11px;
 }
 
 .chat-welcome {
@@ -168,6 +173,14 @@
     }
 
     .chat-user .help {
+        display: none;
+    }
+
+    .responsive-user-block {
+        display: block;
+    }
+
+    .user-block {
         display: none;
     }
 }

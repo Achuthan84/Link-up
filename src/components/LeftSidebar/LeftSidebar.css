@@ -49,7 +49,7 @@
 }
 .sub-menu p{
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
 }
 .menu:hover .sub-menu {
     display: block;
@@ -73,7 +73,7 @@
     border: none;
     outline: none;
     color: white;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .ls-search input::placeholder {
@@ -93,11 +93,11 @@
     gap: 10px;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 17px;
 }
 
 .friends img {
-    width: 35px;
+    width: 38px;
     aspect-ratio: 1/1;
     border-radius: 50%;
 }
@@ -109,7 +109,7 @@
 
 .friends span {
     color: #9f9f9f;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .friends:hover {

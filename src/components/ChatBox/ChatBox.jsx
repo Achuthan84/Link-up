@@ -124,6 +124,9 @@ const ChatBox = () => {
       <div className="chat-user">
         <img src={assets.profile_sample} alt="" />
         <p>{chatUser.userData.name} {Date.now() - chatUser.userData.lastSeen <= 70000 ? <img className='dot' src={assets.green_dot} alt='' /> : null}</p>
+         <button className='responsive-user-block' onClick={() => blockUser(userData.id, chatUser.rId)}>
+          {chatUser.blocked ? "Unblock User" : "Block User"}
+        </button>
         <img onClick={() => setChatVisible(false)} className='arrow' src={assets.arrow_icon} alt="" />
         <button className='user-block' onClick={() => blockUser(userData.id, chatUser.rId)}>
           {chatUser.blocked ? "Unblock User" : "Block User"}

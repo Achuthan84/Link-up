@@ -20,7 +20,7 @@
 }
 
 .rs-profile h3 {
-    font-size: 18px;
+    font-size: 23px;
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
 }
 
 .rs-profile p {
-    font-size: 10px;
+    font-size: 12px;
     opacity: 80%;
     font-weight: 300;
 }
@@ -68,7 +68,7 @@
     background: #077EFF;
     color: white;
     border: none;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 300;
     padding: 10px 65px;
     border-radius: 20px;
