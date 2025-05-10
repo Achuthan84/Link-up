@@ -1,9 +1,7 @@
 .chat-box {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #F1F5FF;
     position: relative;
+    background-color: #F1F5FF;
 }
 
 .chat-user {
@@ -43,12 +41,11 @@
     align-items: center;
     gap: 12px;
     padding: 10px 15px;
+    position: absolute;
     background: white;
-    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 10;
 }
 
 .chat-input img {
@@ -71,11 +68,11 @@
 }
 
 .chat-msg {
-    flex: 1;
+    height: calc(100% - 70px);
+    padding-bottom: 50px;
     overflow-y: scroll;
     display: flex;
     flex-direction: column-reverse;
-    padding-bottom: 50px;
 }
 
 .s-msg div img,
@@ -153,8 +150,6 @@
     justify-content: center;
     gap: 5px;
     color: #adadad;
-    height: 100vh;
-    background-color: #F1F5FF;
 }
 
 .chat-welcome img {
@@ -167,10 +162,11 @@
     color: #383838;
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
     .chat-box {
         width: 100%;
         justify-content: center;
+        
     }
 
     .chat-user .arrow {
